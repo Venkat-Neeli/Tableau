@@ -1,3 +1,149 @@
+REQUIREMENTS_1:
+{
+"PLATFORM USAGE & ADOPTION REPORT 
+
+Business Objective: 
+
+Monitor user engagement and platform adoption rates to identify growth trends and areas for improvement. 
+
+Uses of the Report: 
+
+Track key usage metrics like total meeting minutes and active users. 
+
+Identify trends in new user sign-ups and meeting creation. 
+
+Analyze usage patterns by user plan type (e.g., Free vs. Paid). 
+
+Assess the adoption of new features. 
+
+Data Relationships Used: 
+
+Meetings Users (via Host_ID) 
+
+Attendees Meetings (via Meeting_ID) 
+
+Features_Usage Meetings (via Meeting_ID) 
+
+Data Attributes in the Report: 
+
+User information (User_ID, Plan_Type) 
+
+Meeting information (Meeting_ID, Duration_Minutes, Start_Time) 
+
+Usage details (Feature_Name, Usage_Count) 
+
+Calculated metrics (Total_Meeting_Minutes, Active_Users_Count) 
+
+KPIs and Metrics in the Report: 
+
+Daily/Weekly/Monthly Active Users (DAU and WAU and MAU) 
+
+Total meeting minutes per day 
+
+Average meeting duration 
+
+Number of meetings created per user 
+
+New user sign-ups over time 
+
+Feature adoption rate 
+
+Calculations in the Report: 
+
+The total number of meeting minutes is determined by adding up the duration (in minutes) of all meetings. 
+
+The average meeting duration is found by averaging the duration across all meetings. 
+
+The active user count is the number of unique users who have hosted at least one meeting. 
+
+The feature adoption rate measures the proportion of users who have used a specific feature at least once, compared to the total user base. 
+
+Data Constraints: 
+
+Duration_Minutes must be a non-negative integer. 
+
+Start_Time and End_Time must be valid timestamps. 
+
+A Meeting_ID in Attendees or Features_Usage must exist in the Meetings table. 
+
+Visualizations: 
+
+Line chart showing DAU and WAU and MAU trends. 
+
+Bar chart comparing average meeting duration by Plan_Type. 
+
+Pie chart showing feature usage distribution."
+}
+
+
+REQUIREMENTS_2:
+{
+"SERVICE RELIABILITY & SUPPORT REPORT 
+
+Business Objective 
+
+Analyze platform stability and customer support interactions to improve service quality and reduce ticket volume. 
+
+Uses of the Report 
+
+Identify products or features that generate the most support tickets. 
+
+Track ticket resolution times and patterns. 
+
+Correlate meeting issues with ticket types. 
+
+Assess the efficiency of the support team. 
+
+Data Relationships Used 
+
+Support_Tickets --> Users (via User_ID) 
+
+Support_Tickets --> Meetings (implied link, not direct FK) 
+
+Data Attributes in the Report 
+
+Ticket information (Ticket_ID, Ticket_Type, Resolution_Status, Open_Date) 
+
+User information (User_ID, Company) 
+
+Calculated metrics (Average_Resolution_Time, Ticket_Volume_by_Type) 
+
+KPIs and Metrics in the Report 
+
+Number of tickets opened per day/week. 
+
+Average ticket resolution time. 
+
+Most common ticket types (e.g., audio issues, connectivity problems). 
+
+First-contact resolution rate. 
+
+Tickets opened per 1,000 active users. 
+
+Calculations in the Report 
+
+The ticket volume by type shows how many tickets were created for each type of issue. 
+
+The average resolution time is calculated by determining the average time taken to close a ticket after it was opened. 
+
+The user-to-ticket ratio compares the total number of tickets raised to the number of active users during the same period. 
+
+Data Constraints 
+
+Ticket_Type and Resolution_Status must be from a predefined list of values. 
+
+User_ID must exist in the Users table. 
+
+Open_Date must be a valid date. 
+
+Visualizations 
+
+Bar chart showing ticket volume by Ticket_Type. 
+
+Line chart tracking average resolution time over time.
+}
+
+
 REQUIREMENTS_3:
 {
 "REVENUE AND LICENSE ANALYSIS REPORT 
@@ -75,4 +221,5 @@ Heat map showing geographic revenue distribution.
 Security:
 Anonymize or mask sensitive user data (Email, User_Name) for non-authorized users. 
 }
+
 
