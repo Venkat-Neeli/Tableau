@@ -21,7 +21,7 @@
     </_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule>
   </_.fcp.AnimationOnByDefault.false...style>
   <datasources>
-    <datasource caption='GO_DATA_QUALITY_ERRORS' inline='true' name='federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e' version='18.1'>
+    <datasource caption='Service Reliability Data' inline='true' name='federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7' version='18.1'>
       <connection class='federated'>
         <named-connections>
           <named-connection caption='cmmoeui-dh77804.snowflakecomputing.com' name='snowflake.1t3ikc509qxymk17b056f0gehr4a'>
@@ -31,8 +31,8 @@
         <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='snowflake.1t3ikc509qxymk17b056f0gehr4a' join='inner' type='join'>
           <clause type='join'>
             <expression op='='>
-              <expression op='[GO_DATA_QUALITY_ERRORS].[RESOLVED_BY]' />
-              <expression op='[GO_USER_DIMENSION].[USER_NAME]' />
+              <expression op='[GO_DATA_QUALITY_ERRORS].[SOURCE_SYSTEM]' />
+              <expression op='[GO_USER_DIMENSION].[SOURCE_SYSTEM]' />
             </expression>
           </clause>
           <relation connection='snowflake.1t3ikc509qxymk17b056f0gehr4a' name='GO_DATA_QUALITY_ERRORS' table='[ZOOM].[GOLD].[GO_DATA_QUALITY_ERRORS]' type='table' />
@@ -50,8 +50,8 @@
         <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='snowflake.1t3ikc509qxymk17b056f0gehr4a' join='inner' type='join'>
           <clause type='join'>
             <expression op='='>
-              <expression op='[GO_DATA_QUALITY_ERRORS].[RESOLVED_BY]' />
-              <expression op='[GO_USER_DIMENSION].[USER_NAME]' />
+              <expression op='[GO_DATA_QUALITY_ERRORS].[SOURCE_SYSTEM]' />
+              <expression op='[GO_USER_DIMENSION].[SOURCE_SYSTEM]' />
             </expression>
           </clause>
           <relation connection='snowflake.1t3ikc509qxymk17b056f0gehr4a' name='GO_DATA_QUALITY_ERRORS' table='[ZOOM].[GOLD].[GO_DATA_QUALITY_ERRORS]' type='table' />
@@ -94,15 +94,15 @@
             <collation flag='0' name='binary' />
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>RESOLUTION_STATUS</remote-name>
+            <remote-name>ERROR_DESCRIPTION</remote-name>
             <remote-type>129</remote-type>
-            <local-name>[RESOLUTION_STATUS]</local-name>
+            <local-name>[ERROR_DESCRIPTION]</local-name>
             <parent-name>[GO_DATA_QUALITY_ERRORS]</parent-name>
-            <remote-alias>RESOLUTION_STATUS</remote-alias>
+            <remote-alias>ERROR_DESCRIPTION</remote-alias>
             <ordinal>3</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
-            <width>50</width>
+            <width>1000</width>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
           </metadata-record>
@@ -118,12 +118,38 @@
             <contains-null>true</contains-null>
           </metadata-record>
           <metadata-record class='column'>
+            <remote-name>SEVERITY_LEVEL</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[SEVERITY_LEVEL]</local-name>
+            <parent-name>[GO_DATA_QUALITY_ERRORS]</parent-name>
+            <remote-alias>SEVERITY_LEVEL</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>20</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>RESOLUTION_STATUS</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[RESOLUTION_STATUS]</local-name>
+            <parent-name>[GO_DATA_QUALITY_ERRORS]</parent-name>
+            <remote-alias>RESOLUTION_STATUS</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+          </metadata-record>
+          <metadata-record class='column'>
             <remote-name>RESOLUTION_TIMESTAMP</remote-name>
             <remote-type>93</remote-type>
             <local-name>[RESOLUTION_TIMESTAMP]</local-name>
             <parent-name>[GO_DATA_QUALITY_ERRORS]</parent-name>
             <remote-alias>RESOLUTION_TIMESTAMP</remote-alias>
-            <ordinal>5</ordinal>
+            <ordinal>7</ordinal>
             <local-type>datetime</local-type>
             <aggregation>Year</aggregation>
             <contains-null>true</contains-null>
@@ -134,10 +160,23 @@
             <local-name>[USER_ID]</local-name>
             <parent-name>[GO_USER_DIMENSION]</parent-name>
             <remote-alias>USER_ID</remote-alias>
-            <ordinal>6</ordinal>
+            <ordinal>8</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <width>50</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>USER_NAME</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[USER_NAME]</local-name>
+            <parent-name>[GO_USER_DIMENSION]</parent-name>
+            <remote-alias>USER_NAME</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
           </metadata-record>
@@ -147,7 +186,7 @@
             <local-name>[ORGANIZATION_NAME]</local-name>
             <parent-name>[GO_ORGANIZATION_DIMENSION]</parent-name>
             <remote-alias>ORGANIZATION_NAME</remote-alias>
-            <ordinal>7</ordinal>
+            <ordinal>10</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <width>500</width>
@@ -159,10 +198,13 @@
       <aliases enabled='yes' />
       <column caption='Error ID' datatype='string' name='[ERROR_ID]' role='dimension' type='nominal' />
       <column caption='Error Type' datatype='string' name='[ERROR_TYPE]' role='dimension' type='nominal' />
-      <column caption='Resolution Status' datatype='string' name='[RESOLUTION_STATUS]' role='dimension' type='nominal' />
+      <column caption='Error Description' datatype='string' name='[ERROR_DESCRIPTION]' role='dimension' type='nominal' />
       <column caption='Error Timestamp' datatype='datetime' name='[ERROR_TIMESTAMP]' role='dimension' type='ordinal' />
+      <column caption='Severity Level' datatype='string' name='[SEVERITY_LEVEL]' role='dimension' type='nominal' />
+      <column caption='Resolution Status' datatype='string' name='[RESOLUTION_STATUS]' role='dimension' type='nominal' />
       <column caption='Resolution Timestamp' datatype='datetime' name='[RESOLUTION_TIMESTAMP]' role='dimension' type='ordinal' />
       <column caption='User ID' datatype='string' name='[USER_ID]' role='dimension' type='nominal' />
+      <column caption='User Name' datatype='string' name='[USER_NAME]' role='dimension' type='nominal' />
       <column caption='Organization Name' datatype='string' name='[ORGANIZATION_NAME]' role='dimension' type='nominal' />
       <column caption='Ticket Volume by Type' datatype='integer' name='[Calculation_Ticket_Volume]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='COUNT([ERROR_ID])' />
@@ -170,41 +212,16 @@
       <column caption='Average Resolution Time' datatype='real' name='[Calculation_Avg_Resolution_Time]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='AVG(DATEDIFF(&quot;hour&quot;, [ERROR_TIMESTAMP], [RESOLUTION_TIMESTAMP]))' />
       </column>
-      <column caption='Daily Tickets Opened' datatype='integer' name='[Calculation_Daily_Tickets]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='COUNT(IF DATEDIFF(&quot;day&quot;, [ERROR_TIMESTAMP], TODAY()) = 0 THEN [ERROR_ID] END)' />
-      </column>
-      <column caption='Weekly Tickets Opened' datatype='integer' name='[Calculation_Weekly_Tickets]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='COUNT(IF DATEDIFF(&quot;day&quot;, [ERROR_TIMESTAMP], TODAY()) &lt;= 7 THEN [ERROR_ID] END)' />
+      <column caption='Tickets per 1000 Users' datatype='real' name='[Calculation_Tickets_Per_1000_Users]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNT([ERROR_ID]) / COUNTD([USER_ID]) * 1000' />
       </column>
       <column caption='First Contact Resolution Rate' datatype='real' name='[Calculation_FCR_Rate]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='COUNT(IF [RESOLUTION_STATUS] = &quot;Resolved&quot; AND DATEDIFF(&quot;day&quot;, [ERROR_TIMESTAMP], [RESOLUTION_TIMESTAMP]) = 0 THEN [ERROR_ID] END) / COUNT([ERROR_ID])' />
-      </column>
-      <column caption='User to Ticket Ratio' datatype='real' name='[Calculation_User_Ticket_Ratio]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='COUNT([ERROR_ID]) / COUNTD([USER_ID])' />
+        <calculation class='tableau' formula='COUNT(IF [RESOLUTION_STATUS] = &quot;Resolved&quot; THEN [ERROR_ID] END) / COUNT([ERROR_ID])' />
       </column>
       <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
       </semantic-values>
-      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
-        <objects>
-          <object caption='GO_DATA_QUALITY_ERRORS' id='GO_DATA_QUALITY_ERRORS_2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E'>
-            <properties context=''>
-              <relation connection='snowflake.1t3ikc509qxymk17b056f0gehr4a' name='GO_DATA_QUALITY_ERRORS' table='[ZOOM].[GOLD].[GO_DATA_QUALITY_ERRORS]' type='table' />
-            </properties>
-          </object>
-          <object caption='GO_USER_DIMENSION' id='GO_USER_DIMENSION_3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E8F'>
-            <properties context=''>
-              <relation connection='snowflake.1t3ikc509qxymk17b056f0gehr4a' name='GO_USER_DIMENSION' table='[ZOOM].[GOLD].[GO_USER_DIMENSION]' type='table' />
-            </properties>
-          </object>
-          <object caption='GO_ORGANIZATION_DIMENSION' id='GO_ORGANIZATION_DIMENSION_4D5E6F7A8B9C0D1E2F3A4B5C6D7E8F9A'>
-            <properties context=''>
-              <relation connection='snowflake.1t3ikc509qxymk17b056f0gehr4a' name='GO_ORGANIZATION_DIMENSION' table='[ZOOM].[GOLD].[GO_ORGANIZATION_DIMENSION]' type='table' />
-            </properties>
-          </object>
-        </objects>
-      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
     </datasource>
   </datasources>
   <worksheets>
@@ -219,9 +236,9 @@
       <table>
         <view>
           <datasources>
-            <datasource caption='GO_DATA_QUALITY_ERRORS' name='federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e' />
+            <datasource caption='Service Reliability Data' name='federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7' />
           </datasources>
-          <datasource-dependencies datasource='federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e'>
+          <datasource-dependencies datasource='federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7'>
             <column caption='Error Type' datatype='string' name='[ERROR_TYPE]' role='dimension' type='nominal' />
             <column caption='Ticket Volume by Type' datatype='integer' name='[Calculation_Ticket_Volume]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='COUNT([ERROR_ID])' />
@@ -239,7 +256,7 @@
             </view>
             <mark class='Bar' />
             <encodings>
-              <color column='[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e].[none:ERROR_TYPE:nk]' />
+              <color column='[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7].[none:ERROR_TYPE:nk]' />
             </encodings>
             <style>
               <style-rule element='mark'>
@@ -249,8 +266,8 @@
             </style>
           </pane>
         </panes>
-        <rows>[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e].[sum:Calculation_Ticket_Volume:qk]</rows>
-        <cols>[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e].[none:ERROR_TYPE:nk]</cols>
+        <rows>[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7].[sum:Calculation_Ticket_Volume:qk]</rows>
+        <cols>[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7].[none:ERROR_TYPE:nk]</cols>
       </table>
       <simple-id uuid='{E5F6A7B8-C9D0-1E2F-3A4B-5C6D7E8F9A0B}' />
     </worksheet>
@@ -265,9 +282,9 @@
       <table>
         <view>
           <datasources>
-            <datasource caption='GO_DATA_QUALITY_ERRORS' name='federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e' />
+            <datasource caption='Service Reliability Data' name='federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7' />
           </datasources>
-          <datasource-dependencies datasource='federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e'>
+          <datasource-dependencies datasource='federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7'>
             <column caption='Error Timestamp' datatype='datetime' name='[ERROR_TIMESTAMP]' role='dimension' type='ordinal' />
             <column caption='Average Resolution Time' datatype='real' name='[Calculation_Avg_Resolution_Time]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='AVG(DATEDIFF(&quot;hour&quot;, [ERROR_TIMESTAMP], [RESOLUTION_TIMESTAMP]))' />
@@ -279,7 +296,7 @@
         </view>
         <style>
           <style-rule element='mark'>
-            <encoding attr='color' field='[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e].[sum:Calculation_Avg_Resolution_Time:qk]' palette='blue_10_0' type='interpolated' />
+            <encoding attr='color' field='[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7].[sum:Calculation_Avg_Resolution_Time:qk]' palette='blue_10_0' type='interpolated' />
           </style-rule>
         </style>
         <panes>
@@ -289,7 +306,7 @@
             </view>
             <mark class='Line' />
             <encodings>
-              <color column='[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e].[sum:Calculation_Avg_Resolution_Time:qk]' />
+              <color column='[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7].[sum:Calculation_Avg_Resolution_Time:qk]' />
             </encodings>
             <style>
               <style-rule element='mark'>
@@ -299,8 +316,8 @@
             </style>
           </pane>
         </panes>
-        <rows>[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e].[sum:Calculation_Avg_Resolution_Time:qk]</rows>
-        <cols>[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e].[tdy:ERROR_TIMESTAMP:qk]</cols>
+        <rows>[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7].[sum:Calculation_Avg_Resolution_Time:qk]</rows>
+        <cols>[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7].[tdy:ERROR_TIMESTAMP:qk]</cols>
       </table>
       <simple-id uuid='{F6A7B8C9-D0E1-2F3A-4B5C-6D7E8F9A0B1C}' />
     </worksheet>
@@ -330,4 +347,9 @@
       <simple-id uuid='{A7B8C9D0-E1F2-3A4B-5C6D-7E8F9A0B1C2D}' />
     </window>
   </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Ticket Volume by Type' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABYlAAAWJQFJUiTw
+    </thumbnail>
+  </thumbnails>
 </workbook>
