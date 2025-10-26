@@ -74,14 +74,6 @@ Bar chart comparing average meeting duration by Plan_Type.
 
 Pie chart showing feature usage distribution.
 
-TABLE_NAMES:
-Gold.Go_User_Dimension
-Gold.Go_Meeting_Facts
-Gold.Go_Participant_Facts
-Gold.Go_Feature_Adoption_Summary
-Gold.Go_Usage_Facts
-Gold.Go_Time_Dimension"
-
 }
 
 
@@ -150,11 +142,6 @@ Visualizations
 Bar chart showing ticket volume by Ticket_Type. 
 
 Line chart tracking average resolution time over time.
-
-TABLE_NAMES:
- Gold.Go_Data_Quality_Errors
- Gold.Go_User_Dimension
- Gold.Go_Organization_Dimension"
 
 }
 
@@ -236,14 +223,8 @@ Heat map showing geographic revenue distribution.
 Security:
 Anonymize or mask sensitive user data (Email) for non-authorized users. 
 
-TABLE_NAMES:
-Gold.Go_Billing_Facts
-Gold.Go_User_Dimension
-Gold.Go_Organization_Dimension
-Gold.Go_Meeting_Facts
-Gold.Go_Usage_Facts
-Gold.Go_Time_Dimension"
 }
+
 
 
 
