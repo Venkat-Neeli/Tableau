@@ -21,106 +21,169 @@
     </_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule>
   </_.fcp.AnimationOnByDefault.false...style>
   <datasources>
-    <datasource caption='GOLD' inline='true' name='federated.2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E' version='18.1'>
+    <datasource caption='Service Support Data' inline='true' name='federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7' version='18.1'>
       <connection class='federated'>
         <named-connections>
-          <named-connection caption='NWZLYVS-MU54263.snowflakecomputing.com' name='snowflake.2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E'>
-            <connection authentication='Username Password' class='snowflake' dbname='ZOOM' odbc-connect-string-extras='' one-time-sql='' schema='GOLD' server='nwzlyvs-mu54263.snowflakecomputing.com' service='ACCOUNTADMIN' username='THEJASHWANI' warehouse='COMPUTE_WH' />
+          <named-connection caption='NWZLYVS-MU54263.snowflakecomputing.com' name='snowflake.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7'>
+            <connection authentication='Username Password' class='snowflake' dbname='ZOOM' odbc-connect-string-extras='' one-time-sql='' schema='GOLD' server='nwzlyvs-mu54263.snowflakecomputing.com' service='ACCOUNTADMIN' username='THEJASHWANI' password='Thejashwani@04' warehouse='COMPUTE_WH' />
           </named-connection>
         </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='snowflake.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7' name='GO_MEETING_FACTS' table='[ZOOM].[GOLD].[GO_MEETING_FACTS]' type='table' />
         <_.fcp.ObjectModelEncapsulateLegacy.true...relation type='collection'>
-          <relation connection='snowflake.2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E' name='GO_DATA_QUALITY_ERRORS' table='[ZOOM].[GOLD].[GO_DATA_QUALITY_ERRORS]' type='table' />
-          <relation connection='snowflake.2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E' name='GO_USER_DIMENSION' table='[ZOOM].[GOLD].[GO_USER_DIMENSION]' type='table' />
-          <relation connection='snowflake.2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E' name='GO_ORGANIZATION_DIMENSION' table='[ZOOM].[GOLD].[GO_ORGANIZATION_DIMENSION]' type='table' />
+          <relation connection='snowflake.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7' name='GO_MEETING_FACTS' table='[ZOOM].[GOLD].[GO_MEETING_FACTS]' type='table' />
+          <relation connection='snowflake.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7' name='GO_USER_DIMENSION' table='[ZOOM].[GOLD].[GO_USER_DIMENSION]' type='table' />
+          <relation connection='snowflake.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7' name='GO_TIME_DIMENSION' table='[ZOOM].[GOLD].[GO_TIME_DIMENSION]' type='table' />
+          <relation connection='snowflake.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7' name='GO_ORGANIZATION_DIMENSION' table='[ZOOM].[GOLD].[GO_ORGANIZATION_DIMENSION]' type='table' />
         </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
         <cols>
-          <map key='[ERROR_ID]' value='[GO_DATA_QUALITY_ERRORS].[ERROR_ID]' />
-          <map key='[ERROR_TYPE]' value='[GO_DATA_QUALITY_ERRORS].[ERROR_TYPE]' />
-          <map key='[ERROR_DESCRIPTION]' value='[GO_DATA_QUALITY_ERRORS].[ERROR_DESCRIPTION]' />
-          <map key='[ERROR_TIMESTAMP]' value='[GO_DATA_QUALITY_ERRORS].[ERROR_TIMESTAMP]' />
-          <map key='[RESOLUTION_STATUS]' value='[GO_DATA_QUALITY_ERRORS].[RESOLUTION_STATUS]' />
-          <map key='[RESOLUTION_TIMESTAMP]' value='[GO_DATA_QUALITY_ERRORS].[RESOLUTION_TIMESTAMP]' />
-          <map key='[SEVERITY_LEVEL]' value='[GO_DATA_QUALITY_ERRORS].[SEVERITY_LEVEL]' />
-          <map key='[SOURCE_TABLE]' value='[GO_DATA_QUALITY_ERRORS].[SOURCE_TABLE]' />
+          <map key='[MEETING_ID]' value='[GO_MEETING_FACTS].[MEETING_ID]' />
+          <map key='[MEETING_STATUS]' value='[GO_MEETING_FACTS].[MEETING_STATUS]' />
+          <map key='[QUALITY_SCORE_AVG]' value='[GO_MEETING_FACTS].[QUALITY_SCORE_AVG]' />
+          <map key='[START_TIME]' value='[GO_MEETING_FACTS].[START_TIME]' />
+          <map key='[HOST_ID]' value='[GO_MEETING_FACTS].[HOST_ID]' />
           <map key='[USER_ID]' value='[GO_USER_DIMENSION].[USER_ID]' />
           <map key='[USER_NAME]' value='[GO_USER_DIMENSION].[USER_NAME]' />
-          <map key='[ORGANIZATION_ID]' value='[GO_ORGANIZATION_DIMENSION].[ORGANIZATION_ID]' />
+          <map key='[EMAIL_ADDRESS]' value='[GO_USER_DIMENSION].[EMAIL_ADDRESS]' />
+          <map key='[DATE_KEY]' value='[GO_TIME_DIMENSION].[DATE_KEY]' />
+          <map key='[DAY_NAME]' value='[GO_TIME_DIMENSION].[DAY_NAME]' />
+          <map key='[MONTH_NAME]' value='[GO_TIME_DIMENSION].[MONTH_NAME]' />
           <map key='[ORGANIZATION_NAME]' value='[GO_ORGANIZATION_DIMENSION].[ORGANIZATION_NAME]' />
         </cols>
         <metadata-records>
           <metadata-record class='column'>
-            <remote-name>ERROR_ID</remote-name>
+            <remote-name>MEETING_STATUS</remote-name>
             <remote-type>129</remote-type>
-            <local-name>[ERROR_ID]</local-name>
-            <parent-name>[GO_DATA_QUALITY_ERRORS]</parent-name>
-            <remote-alias>ERROR_ID</remote-alias>
+            <local-name>[MEETING_STATUS]</local-name>
+            <parent-name>[GO_MEETING_FACTS]</parent-name>
+            <remote-alias>MEETING_STATUS</remote-alias>
             <ordinal>1</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <width>50</width>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>"SQL_VARCHAR"</attribute>
+              <attribute datatype='string' name='DebugWireType'>"SQL_C_CHAR"</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>"true"</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[GO_MEETING_FACTS_2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>QUALITY_SCORE_AVG</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[QUALITY_SCORE_AVG]</local-name>
+            <parent-name>[GO_MEETING_FACTS]</parent-name>
+            <remote-alias>QUALITY_SCORE_AVG</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>5</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>"SQL_DECIMAL"</attribute>
+              <attribute datatype='string' name='DebugWireType'>"SQL_C_NUMERIC"</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[GO_MEETING_FACTS_2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
         </metadata-records>
       </connection>
       <aliases enabled='yes' />
-      <column caption='Error Id' datatype='string' name='[ERROR_ID]' role='dimension' type='nominal' />
-      <column caption='Error Type' datatype='string' name='[ERROR_TYPE]' role='dimension' type='nominal' />
-      <column caption='Error Description' datatype='string' name='[ERROR_DESCRIPTION]' role='dimension' type='nominal' />
-      <column caption='Error Timestamp' datatype='datetime' name='[ERROR_TIMESTAMP]' role='dimension' type='ordinal' />
-      <column caption='Resolution Status' datatype='string' name='[RESOLUTION_STATUS]' role='dimension' type='nominal' />
-      <column caption='Resolution Timestamp' datatype='datetime' name='[RESOLUTION_TIMESTAMP]' role='dimension' type='ordinal' />
-      <column caption='Severity Level' datatype='string' name='[SEVERITY_LEVEL]' role='dimension' type='nominal' />
-      <column caption='Source Table' datatype='string' name='[SOURCE_TABLE]' role='dimension' type='nominal' />
-      <column caption='User Id' datatype='string' name='[USER_ID]' role='dimension' type='nominal' />
+      <column caption='Meeting Status' datatype='string' name='[MEETING_STATUS]' role='dimension' type='nominal' />
+      <column caption='Quality Score Average' datatype='real' name='[QUALITY_SCORE_AVG]' role='measure' type='quantitative' />
+      <column caption='Start Time' datatype='datetime' name='[START_TIME]' role='dimension' type='ordinal' />
       <column caption='User Name' datatype='string' name='[USER_NAME]' role='dimension' type='nominal' />
-      <column caption='Organization Id' datatype='string' name='[ORGANIZATION_ID]' role='dimension' type='nominal' />
       <column caption='Organization Name' datatype='string' name='[ORGANIZATION_NAME]' role='dimension' type='nominal' />
-      
-      <!-- Calculated Fields for KPIs -->
-      <column caption='Ticket Volume by Type' datatype='integer' name='[TICKET_VOLUME_BY_TYPE]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='COUNTD([ERROR_ID])' />
+      <column caption='Email Masked' datatype='string' name='[Calculation_F6A7B8C9D0E1F2A3]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='LEFT([EMAIL_ADDRESS], 1) + "****@" + SPLIT([EMAIL_ADDRESS], "@", 2)' />
       </column>
-      
-      <column caption='Average Resolution Time' datatype='real' name='[AVG_RESOLUTION_TIME]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='AVG(DATEDIFF(&quot;hour&quot;, [ERROR_TIMESTAMP], [RESOLUTION_TIMESTAMP]))' />
+      <column caption='Ticket Volume by Type' datatype='integer' name='[Calculation_A7B8C9D0E1F2A3B4]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNT([MEETING_STATUS])' />
       </column>
-      
-      <column caption='First Contact Resolution Rate' datatype='real' name='[FIRST_CONTACT_RESOLUTION_RATE]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='SUM(IF [RESOLUTION_STATUS] = &quot;Resolved&quot; THEN 1 ELSE 0 END) / COUNT([ERROR_ID])' />
+      <column caption='Average Resolution Time' datatype='real' name='[Calculation_B8C9D0E1F2A3B4C5]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='AVG([QUALITY_SCORE_AVG])' />
       </column>
-      
-      <column caption='Tickets Per 1000 Users' datatype='real' name='[TICKETS_PER_1000_USERS]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='(COUNTD([ERROR_ID]) / COUNTD([USER_ID])) * 1000' />
+      <column caption='First Contact Resolution Rate' datatype='real' name='[Calculation_C9D0E1F2A3B4C5D6]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM(IF [MEETING_STATUS] = "Completed" THEN 1 ELSE 0 END) / COUNT([MEETING_STATUS])' />
       </column>
-      
-      <column caption='Daily Ticket Count' datatype='integer' name='[DAILY_TICKET_COUNT]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='COUNTD(IF DATEPART(&quot;day&quot;, [ERROR_TIMESTAMP]) = DATEPART(&quot;day&quot;, TODAY()) THEN [ERROR_ID] END)' />
+      <column caption='User to Ticket Ratio' datatype='real' name='[Calculation_D0E1F2A3B4C5D6E7]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNT([MEETING_STATUS]) / COUNTD([HOST_ID])' />
       </column>
-      
-      <column caption='Weekly Ticket Count' datatype='integer' name='[WEEKLY_TICKET_COUNT]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='COUNTD(IF DATEPART(&quot;week&quot;, [ERROR_TIMESTAMP]) = DATEPART(&quot;week&quot;, TODAY()) THEN [ERROR_ID] END)' />
-      </column>
-      
+      <column caption='Date Key' datatype='date' name='[DATE_KEY]' role='dimension' type='ordinal' />
+      <_.fcp.ObjectModelTableType.true...column caption='GO_MEETING_FACTS' datatype='table' name='[__tableau_internal_object_id__].[GO_MEETING_FACTS_2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='GO_USER_DIMENSION' datatype='table' name='[__tableau_internal_object_id__].[GO_USER_DIMENSION_3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E8]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='GO_TIME_DIMENSION' datatype='table' name='[__tableau_internal_object_id__].[GO_TIME_DIMENSION_4D5E6F7A8B9C0D1E2F3A4B5C6D7E8F9]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='GO_ORGANIZATION_DIMENSION' datatype='table' name='[__tableau_internal_object_id__].[GO_ORGANIZATION_DIMENSION_5E6F7A8B9C0D1E2F3A4B5C6D7E8F9A0]' role='measure' type='quantitative' />
       <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
       <semantic-values>
-        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+        <semantic-value key='[Country].[Name]' value='"United States"' />
       </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='GO_MEETING_FACTS' id='GO_MEETING_FACTS_2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7'>
+            <properties context=''>
+              <relation connection='snowflake.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7' name='GO_MEETING_FACTS' table='[ZOOM].[GOLD].[GO_MEETING_FACTS]' type='table' />
+            </properties>
+          </object>
+          <object caption='GO_USER_DIMENSION' id='GO_USER_DIMENSION_3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E8'>
+            <properties context=''>
+              <relation connection='snowflake.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7' name='GO_USER_DIMENSION' table='[ZOOM].[GOLD].[GO_USER_DIMENSION]' type='table' />
+            </properties>
+          </object>
+          <object caption='GO_TIME_DIMENSION' id='GO_TIME_DIMENSION_4D5E6F7A8B9C0D1E2F3A4B5C6D7E8F9'>
+            <properties context=''>
+              <relation connection='snowflake.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7' name='GO_TIME_DIMENSION' table='[ZOOM].[GOLD].[GO_TIME_DIMENSION]' type='table' />
+            </properties>
+          </object>
+          <object caption='GO_ORGANIZATION_DIMENSION' id='GO_ORGANIZATION_DIMENSION_5E6F7A8B9C0D1E2F3A4B5C6D7E8F9A0'>
+            <properties context=''>
+              <relation connection='snowflake.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7' name='GO_ORGANIZATION_DIMENSION' table='[ZOOM].[GOLD].[GO_ORGANIZATION_DIMENSION]' type='table' />
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[HOST_ID]' />
+              <expression op='[USER_ID]' />
+            </expression>
+            <first-end-point object-id='GO_MEETING_FACTS_2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7' />
+            <second-end-point object-id='GO_USER_DIMENSION_3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E8' unique-key='true' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[START_TIME]' />
+              <expression op='[DATE_KEY]' />
+            </expression>
+            <first-end-point object-id='GO_MEETING_FACTS_2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7' />
+            <second-end-point object-id='GO_TIME_DIMENSION_4D5E6F7A8B9C0D1E2F3A4B5C6D7E8F9' unique-key='true' />
+          </relationship>
+        </relationships>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
     </datasource>
   </datasources>
   <worksheets>
-    <!-- Bar Chart for Ticket Volume by Error Type -->
     <worksheet name='Ticket Volume by Type'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Ticket Volume by Meeting Status Type</run>
+          </formatted-text>
+        </title>
+      </layout-options>
       <table>
         <view>
           <datasources>
-            <datasource caption='GOLD' name='federated.2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E' />
+            <datasource caption='Service Support Data' name='federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7' />
           </datasources>
-          <datasource-dependencies datasource='federated.2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E'>
-            <column caption='Error Type' datatype='string' name='[ERROR_TYPE]' role='dimension' type='nominal' />
-            <column caption='Ticket Volume by Type' datatype='integer' name='[TICKET_VOLUME_BY_TYPE]' role='measure' type='quantitative' />
-            <column-instance column='[ERROR_TYPE]' derivation='None' name='[none:ERROR_TYPE:nk]' pivot='key' type='nominal' />
-            <column-instance column='[TICKET_VOLUME_BY_TYPE]' derivation='Attribute' name='[attr:TICKET_VOLUME_BY_TYPE:qk]' pivot='key' type='quantitative' />
+          <datasource-dependencies datasource='federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7'>
+            <column caption='Ticket Volume by Type' datatype='integer' name='[Calculation_A7B8C9D0E1F2A3B4]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNT([MEETING_STATUS])' />
+            </column>
+            <column caption='Meeting Status' datatype='string' name='[MEETING_STATUS]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_A7B8C9D0E1F2A3B4]' derivation='None' name='[none:Calculation_A7B8C9D0E1F2A3B4:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[MEETING_STATUS]' derivation='None' name='[none:MEETING_STATUS:nk]' pivot='key' type='nominal' />
           </datasource-dependencies>
           <aggregation value='true' />
         </view>
@@ -131,26 +194,46 @@
               <breakdown value='auto' />
             </view>
             <mark class='Bar' />
+            <encodings>
+              <color column='[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7].[none:MEETING_STATUS:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
           </pane>
         </panes>
-        <rows>[federated.2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E].[attr:TICKET_VOLUME_BY_TYPE:qk]</rows>
-        <cols>[federated.2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E].[none:ERROR_TYPE:nk]</cols>
+        <rows>[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7].[none:Calculation_A7B8C9D0E1F2A3B4:qk]</rows>
+        <cols>[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7].[none:MEETING_STATUS:nk]</cols>
       </table>
-      <simple-id uuid='{5E6F7A8B-9C0D-1E2F-3A4B-5C6D7E8F9A0B}' />
+      <simple-id uuid='{E5F6A7B8-C9D0-E1F2-A3B4-C5D6E7F8A9B0}' />
     </worksheet>
-    
-    <!-- Line Chart for Average Resolution Time Over Time -->
-    <worksheet name='Resolution Time Trends'>
+    <worksheet name='Average Resolution Time Trend'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Average Resolution Time Over Time</run>
+          </formatted-text>
+        </title>
+      </layout-options>
       <table>
         <view>
           <datasources>
-            <datasource caption='GOLD' name='federated.2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E' />
+            <datasource caption='Service Support Data' name='federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7' />
           </datasources>
-          <datasource-dependencies datasource='federated.2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E'>
-            <column caption='Error Timestamp' datatype='datetime' name='[ERROR_TIMESTAMP]' role='dimension' type='ordinal' />
-            <column caption='Average Resolution Time' datatype='real' name='[AVG_RESOLUTION_TIME]' role='measure' type='quantitative' />
-            <column-instance column='[ERROR_TIMESTAMP]' derivation='Day' name='[dy:ERROR_TIMESTAMP:ok]' pivot='key' type='ordinal' />
-            <column-instance column='[AVG_RESOLUTION_TIME]' derivation='Attribute' name='[attr:AVG_RESOLUTION_TIME:qk]' pivot='key' type='quantitative' />
+          <datasource-dependencies datasource='federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7'>
+            <column caption='Average Resolution Time' datatype='real' name='[Calculation_B8C9D0E1F2A3B4C5]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='AVG([QUALITY_SCORE_AVG])' />
+            </column>
+            <column caption='Date Key' datatype='date' name='[DATE_KEY]' role='dimension' type='ordinal' />
+            <column caption='Email Masked' datatype='string' name='[Calculation_F6A7B8C9D0E1F2A3]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='LEFT([EMAIL_ADDRESS], 1) + "****@" + SPLIT([EMAIL_ADDRESS], "@", 2)' />
+            </column>
+            <column-instance column='[Calculation_B8C9D0E1F2A3B4C5]' derivation='None' name='[none:Calculation_B8C9D0E1F2A3B4C5:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[DATE_KEY]' derivation='Day-Trunc' name='[tdy:DATE_KEY:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_F6A7B8C9D0E1F2A3]' derivation='None' name='[none:Calculation_F6A7B8C9D0E1F2A3:nk]' pivot='key' type='nominal' />
           </datasource-dependencies>
           <aggregation value='true' />
         </view>
@@ -161,12 +244,22 @@
               <breakdown value='auto' />
             </view>
             <mark class='Line' />
+            <encodings>
+              <color column='[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7].[none:Calculation_B8C9D0E1F2A3B4C5:qk]' />
+              <lod column='[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7].[none:Calculation_F6A7B8C9D0E1F2A3:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
           </pane>
         </panes>
-        <rows>[federated.2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E].[attr:AVG_RESOLUTION_TIME:qk]</rows>
-        <cols>[federated.2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E].[dy:ERROR_TIMESTAMP:ok]</cols>
+        <rows>[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7].[none:Calculation_B8C9D0E1F2A3B4C5:qk]</rows>
+        <cols>[federated.2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7].[tdy:DATE_KEY:qk]</cols>
       </table>
-      <simple-id uuid='{6F7A8B9C-0D1E-2F3A-4B5C-6D7E8F9A0B1C}' />
+      <simple-id uuid='{F6A7B8C9-D0E1-F2A3-B4C5-D6E7F8A9B0C1}' />
     </worksheet>
   </worksheets>
   <windows saved-dpi-scale-factor='1.5' source-height='44'>
@@ -191,7 +284,7 @@
           </strip>
         </edge>
       </cards>
-      <simple-id uuid='{7A8B9C0D-1E2F-3A4B-5C6D-7E8F9A0B1C2D}' />
+      <simple-id uuid='{A7B8C9D0-E1F2-A3B4-C5D6-E7F8A9B0C1D2}' />
     </window>
   </windows>
 </workbook>
